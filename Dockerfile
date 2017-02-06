@@ -14,7 +14,7 @@ RUN rpm --import RPM-GPG-KEY-webtatic-el7; rm RPM-GPG-KEY-webtatic-el7
 RUN yum update -y
 
 # Install packages
-RUN yum install -y unzip git gcc make openssl php70w php70w-xml php70w-gd php70w-mbstring php70w-mysqli php70w-devel libssh2-devel
+RUN yum install -y unzip git gcc make openssl ca-certificates php70w php70w-xml php70w-gd php70w-mbstring php70w-mysqli php70w-devel libssh2-devel
 
 # Install SSH2
 RUN curl -LO https://github.com/Sean-Der/pecl-networking-ssh2/archive/php7.zip
