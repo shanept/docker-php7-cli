@@ -15,13 +15,13 @@ RUN yum update -y
 
 # Install packages
 RUN yum install -y unzip git gcc make openssl ca-certificates libssh2-devel \
-                   php70w php70w-{xml,gd,mbstring,mysqli,devel,phpdbg}
+                   php70w php70w-{xml,gd,mbstring,mysqli,devel,pecl-xdebug}
 
 # Install SSH2
 RUN curl -LO https://github.com/Sean-Der/pecl-networking-ssh2/archive/php7.zip
 RUN unzip php7.zip && rm php7.zip && cd pecl-networking-ssh2-php7/ && \
     phpize && ./configure && make && make install
-RUN rm -Rf /pecl-networking-ssh2
+RUN rm -Rf /pecl-networking-ssh2-php7/
 RUN echo -e "; Enable ssh2 extension module\nextension=ssh2.so" > /etc/php.d/ssh2.ini
 
 # Install Composer
